@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-class Info extends Component{
-    render() {
-      return (
-        <div>
-          <h3>Result</h3>
-        </div>
-      );
-    }
+class Result extends Component{
+  render() {
+    return (
+      <ul>
+        {this.props.items.map(item => (
+          <li key={item.id}>{item.text}</li>
+        ))}
+      </ul>
+    );
+  }
   }
   
-  export default Info;
+  export default Result;
