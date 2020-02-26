@@ -1,23 +1,38 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Form from "./components/form";
 import Info from "./components/info";
 import Result from "./components/result";
 
 class App extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = { items: [], text: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  
+state = {
+  degr: undefined,
+  res: undefined,
+  error: undefined
+}
+
+  convertСelsii = async (e) => {
+    e.preventDefault();
+    const degree = e.target.elements.temperature.value;
+    const farengeite = degree *9/5 + 32;
+    
+    this.setState({
+      deg: degree,
+      res: farengeite,
+      error: ""
+    });
   }
 
   render() {
     return (
       <div>
         <Info />
-        <Form />
-        <Result />
+        <Form convertDigrees={this.convertСelsii} />
+        <Result 
+          deg={this.state.deg}
+          res={this.state.res}
+          error={this.state.error}
+        />
       </div>
     );
   }
@@ -27,9 +42,4 @@ class App extends React.Component{
 
 export default App;
 
-
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('todos-example')
-// );
 

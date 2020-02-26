@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class Result extends Component{
   render() {
     return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
+      <div>
+        {this.props.res &&
+          <p> {this.props.deg} degrees Celsius = {this.props.res} degrees Farenheit</p>
+        }
+      </div>
     );
   }
   }
